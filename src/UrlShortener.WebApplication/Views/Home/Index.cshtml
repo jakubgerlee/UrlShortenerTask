@@ -1,9 +1,23 @@
-﻿@{
+﻿@model UrlShortener.WebApplication.ViewModels.CreateShortUrlViewModel
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
-    <h3>Hi {username}!</h3>
+    <h3>Hi {}!</h3>
     <p> Please check <a asp-area="" asp-controller="Home" asp-action="TechTaskDetails">Task Details</a> for more details.</p>
+</div>
+<div class="text-center">
+    <h2>Create a Short URL</h2>
+
+    <form asp-action="CreateShortUrl" method="post">
+        <div class="form-group">
+            <label for="OriginalUrl">Enter a URL:</label>
+            <input asp-for="OriginalUrl" class="form-control" id="OriginalUrl" placeholder="https://example.com" />
+            <span asp-validation-for="OriginalUrl" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-primary">Create</button>
+    </form>
 </div>

@@ -1,0 +1,27 @@
+﻿@model UrlShortener.WebApplication.ViewModels.ShortUrlsViewModel
+
+@{
+    ViewBag.Title = "Short URLs";
+}
+
+<h2>List of Short URLs</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Original URL</th>
+            <th>Short URL</th>
+            <th>Date Created</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var shortUrl in Model.ShortUrls)
+        {
+            <tr>
+                <td>@shortUrl.OriginalUrl</td>
+                <td><a href="@Url.Action("RedirectToOriginalUrl", "Home", new { shortCode = shortUrl.ShortenedUrl })" target="_blank">@shortUrl.ShortenedUrl</a></td>
+                <td>@shortUrl.DateCreated.ToString("g")</td>
+            </tr>
+        }
+    </tbody>
+</table>
